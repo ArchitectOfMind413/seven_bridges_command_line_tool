@@ -1,0 +1,96 @@
+==================================================================================================================================================================================================================================================
+Projects list:
+    COMMAND: "curl -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\" -X GET \"https://cgc-api.sbgenomics.com/v2/projects?fields=id,name\""
+    ANOTHER EXAMPLE: "curl -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\" -X GET \"https://cgc-api.sbgenomics.com/v2/projects?fields=!id,!name\""
+
+    PAYLOAD:
+	{"href":"https://cgc-api.sbgenomics.com/v2/projects?offset=0&limit=2&fields=id,name",
+	 "items":[
+	    {"id":"a413/analyze7-sector8","name":"analyze7-sector8"},
+	    {"id":"a413/analyze413-sector7","name":"analyze413_sector7"}],
+	    "links":[]
+	 }
+
+	 FULL PAYLOAD:
+     {"href":"https://cgc-api.sbgenomics.com/v2/projects?offset=0&limit=2",
+     "items":[
+        {"href":"https://cgc-api.sbgenomics.com/v2/projects/a413/analyze7-sector8","id":"a413/analyze7-sector8","name":"analyze7-sector8","created_by":"a413","created_on":"2019-07-08T21:53:57Z","modified_on":"2019-07-08T21:53:57Z"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/projects/a413/analyze413-sector7","id":"a413/analyze413-sector7","name":"analyze413_sector7","created_by":"a413","created_on":"2019-07-08T12:27:59Z","modified_on":"2019-07-08T12:27:59Z"}],
+        "links":[]
+     }
+==================================================================================================================================================================================================================================================
+List of files in project:
+    COMMAND: "curl -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\" -X GET \"https://cgc-api.sbgenomics.com/v2/files?project=a413/analyze413-sector7\""
+
+    PAYLOAD:
+    {"href":"https://cgc-api.sbgenomics.com/v2/files?offset=0&limit=7&project=a413/analyze413-sector7",
+     "items":[
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d2336f8e4b0999af0a47cad","id":"5d2336f8e4b0999af0a47cad","name":"config_files","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"folder"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e3","id":"5d23576ee4b04e14ecb344e3","name":"hg38_To_Hg19.over.chain.gz","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"file"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e5","id":"5d23576ee4b04e14ecb344e5","name":"hs37d5_1000GP.gc","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"file"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8","id":"5d23576ee4b04e14ecb344e8","name":"human_g1k_v37_decoy.dict","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"file"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e6","id":"5d23576ee4b04e14ecb344e6","name":"human_g1k_v37_decoy.fasta.fai","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"file"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e4","id":"5d23576ee4b04e14ecb344e4","name":"wgs_coverage_regions.hg38.interval_list","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"file"},
+        {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e7","id":"5d23576ee4b04e14ecb344e7","name":"wholegenome_hg38_with_chr.interval_list","project":"a413/analyze413-sector7","parent":"5d2336cee4b0999af0a47ca3","type":"file"}],
+        "links":[]
+     }
+==================================================================================================================================================================================================================================================
+Checkout stats of specific ID:
+
+1.When we inspect stats of DIRECTORY:
+    COMMAND: "curl  -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\" -X GET \"https://cgc-api.sbgenomics.com/v2/files/5d2336f8e4b0999af0a47cad\""
+
+    PAYLOAD:
+    {"href":"https://cgc-api.sbgenomics.com/v2/files/5d2336f8e4b0999af0a47cad",
+     "id":"5d2336f8e4b0999af0a47cad","name":"config_files",
+	 "project":"a413/analyze413-sector7",
+	 "parent":"5d2336cee4b0999af0a47ca3",
+	 "type":"folder",
+	 "created_on":"2019-07-08T12:28:40Z",
+	 "modified_on":"2019-07-08T12:28:40Z"}
+
+1.When we inspect stats of FILE:
+    COMMAND: "curl  -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\" -X GET \"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8\""
+
+    PAYLOAD:
+    {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8",
+	 "id":"5d23576ee4b04e14ecb344e8",
+	 "name":"human_g1k_v37_decoy.dict",
+	 "size":10158,
+	 "project":"a413/analyze413-sector7",
+	 "parent":"5d2336cee4b0999af0a47ca3",
+	 "type":"file",
+	 "created_on":"2019-07-08T14:47:10Z",
+	 "modified_on":"2019-07-08T14:47:10Z",
+	 "storage":{"type":"PLATFORM","hosted_on_locations":["aws:us-east-1","google:us-west1"]},
+	 "origin":{},
+	 "tags":["GATK_RESOURCE_BUNDLE"],
+	 "metadata":{"md5_sum":"065565743a0dcb7c54ea821405be2915","species":"Homo sapiens","reference_genome":"GRCh37","sbg_public_files_category":"reference"}}
+==================================================================================================================================================================================================================================================
+Update file details:
+    COMMAND: "curl --data '{\"metadata\": {\"disease_type\": \"Acute Myeloid Leukemia\"}}' -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\"
+              -X PATCH \"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8\""
+
+    PAYLOAD:
+    {"href":"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8",
+     "id":"5d23576ee4b04e14ecb344e8",
+     "name":"human_g1k_v37_decoy.dict",
+     "size":10158,
+     "project":"a413/analyze413-sector7",
+     "parent":"5d2336cee4b0999af0a47ca3",
+     "type":"file",
+     "created_on":"2019-07-08T14:47:10Z",
+     "modified_on":"2019-07-08T22:19:08Z",
+     "storage":{"type":"PLATFORM","hosted_on_locations":["aws:us-east-1","google:us-west1"]},
+     "origin":{},
+     "tags":["GATK_RESOURCE_BUNDLE"],
+     "metadata":{"disease_type":"Acute Myeloid Leukemia"}}
+==================================================================================================================================================================================================================================================
+Get link for download:
+    COMMAND: "curl -s -H \"X-SBG-Auth-Token: 0a4ac2b8ef004ac2a8efde9a85640bb9\" -H \"content-type: application/json\" -X GET \"https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8/download_info\""
+
+    PAYLOAD:
+    {"url":"https://sb-public-us-east-1.s3.amazonaws.com/human_g1k_v37_decoy.dict?add.x-requestid=fc5d0385-a565-4ae4-9215-a01d8e25ab80&add.x-username=a413&add.x-project=
+    a413%2Fanalyze413-sector7&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190708T222642Z&X-Amz-SignedHeaders=host&X-Amz-Expires=172800&X-Amz-Credential=
+    AKIAJQD4ZMI5SNVG2A2A%2F20190708%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=b7e325c590d73e5326c294f42e040c6e12e6025adbc88a7006c339b0c795f445"}
+==================================================================================================================================================================================================================================================

@@ -1,0 +1,28 @@
+======================================================================================================================================================================
+go run main.go -method=files_update_metadata -file=5d23576ee4b04e14ecb344e8 -mk=disease_type -mv="Acute Myeloid Leukemia" -token=0a4ac2b8ef004ac2a8efde9a85640bb9
+======================================================================================================================================================================
+{
+  "href": "https://cgc-api.sbgenomics.com/v2/files/5d23576ee4b04e14ecb344e8",
+  "id": "5d23576ee4b04e14ecb344e8",
+  "name": "human_g1k_v37_decoy.dict",
+  "size": 10158,
+  "project": "a413/analyze413-sector7",
+  "parent": "5d2336cee4b0999af0a47ca3",
+  "type": "file",
+  "created_on": "2019-07-08T14:47:10Z",
+  "modified_on": "2019-07-13T22:05:05Z",
+  "storage": {
+    "type": "PLATFORM",
+    "hosted_on_locations": [
+      "aws:us-east-1",
+      "google:us-west1"
+    ]
+  },
+  "origin": {},
+  "tags": [
+    "GATK_RESOURCE_BUNDLE"
+  ],
+  "metadata": {
+    "disease_type": "Acute Myeloid Leukemia"
+  }
+}
