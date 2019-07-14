@@ -1,2 +1,70 @@
 # seven_bridges_command_line_tool
 Command Line Tool for Seven Brides Platform Services
+
+=============================================================================================
+
+In main.go we have two functions.
+
+First function generate all flags from package terminal_flags.Function GenerateFLags() 
+return all values from flags and place their values to global variables in package 
+interfaces_impl in file <switch_method_impl.go>.
+
+Second function execute specific method.
+
+=============================================================================================
+
+Depending on which method we use, we have 6 possibilities.
+In each case in switch function for Method string, we have two things.
+
+Firstly we convert list of string into map, where we define, which flags are necessary, 
+for that specific method.
+
+For example, for method files_list, we must provide ProjectID and token. 
+Otherwise main will tell us that we didn't provide necessary flags.
+
+=============================================================================================
+
+In function ExecuteIfVarsAreNotEmpty() we define 3 things.
+First input variable is function <f func(...string)>. 
+Second is Method name, and third is map of necessary flags.
+
+All 6 methods basically have the same definition, with <...string> parameter.
+The difference is the number of input parameters, and what those parameters preset 
+(in this case our flags).
+
+=============================================================================================
+
+In function ExecuteIfVarsAreNotEmpty() firstly we check if values of the keys in map which 
+is input variable, are empty.
+
+     for k,v := range m{
+		  if v == ""{
+			  missingFlags +=fmt.Sprintf("Flag <%v> is missing!",k)
+		  }
+	  }
+
+For empty string, we collect them in global variable missingFlags.
+In the case where missingFlags are not empty, we print them and inform which method can't be executed!
+
+	  if missingFlags !=""{
+		  missingFlags +=fmt.Sprintf("Method <%v> can't be executed!\n",method)
+		  log.Fatal(missingFlags)
+	  }
+
+If everything is fine, and we have all necessary flags, we collect all values in new list.
+
+    var l []string
+	  for _,p := range m{
+		  l=append(l,p)
+	  }
+
+Then we execute function which is input variable, with all parameters from the list where are our values from map.
+
+    switch len(l) {
+	  case 2:
+		  f(l[0],l[1])
+	  case 3:
+		  f(l[0],l[1],l[2])
+	  case 4:
+		  f(l[0],l[1],l[2],l[3])
+	  }
